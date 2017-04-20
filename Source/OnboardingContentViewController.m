@@ -95,8 +95,10 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
 
     // Icon image view
     self.iconImageView = [[UIImageView alloc] initWithImage:image];
-    self.iconWidth = image ? image.size.width : kDefaultImageViewSize;
-    self.iconHeight = image ? image.size.height : kDefaultImageViewSize;
+    CGFloat screenWidth = [[UIScreen mainScreen] applicationFrame].size.width - 30;
+    CGFloat ratio = image.size.width/screenWidth < 1 ? 1: image.size.width/screenWidth;
+    self.iconWidth = image ? image.size.width/ratio : kDefaultImageViewSize;
+    self.iconHeight = image ? image.size.height/ratio : kDefaultImageViewSize;
 
     // Title label
     self.titleLabel = [UILabel new];
