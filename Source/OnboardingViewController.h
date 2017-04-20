@@ -135,4 +135,5 @@
  */
 - (void)moveNextPage;
 
+- (void)moveToLastPage;
 @end
