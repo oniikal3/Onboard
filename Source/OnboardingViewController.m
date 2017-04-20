@@ -312,6 +312,14 @@ static NSString * const kSkipButtonText = @"Skip";
     }
 }
 
+- (void)moveToLastPage {
+    NSUInteger indexOfLastPage = [self.viewControllers count] - 1;
+    if (indexOfLastPage < self.viewControllers.count) {
+        [self.pageVC setViewControllers:@[self.viewControllers[indexOfLastPage]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        [self.pageControl setCurrentPage:indexOfLastPage];
+    }
+}
+
 
 #pragma mark - Onboarding content view controller delegate
 
