@@ -274,19 +274,34 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
 
     [self.iconImageView setFrame:CGRectMake((viewWidth / 2.0) - (self.iconWidth / 2.0), self.topPadding, self.iconWidth, self.iconHeight)];
 
-    CGFloat titleYOrigin = CGRectGetMaxY(self.iconImageView.frame) + self.underIconPadding;
-
+//    CGFloat titleYOrigin = CGRectGetMaxY(self.iconImageView.frame) + self.underIconPadding;
+//
+//    self.titleLabel.frame = CGRectMake(xPadding, titleYOrigin, contentWidth, 0);
+//    [self.titleLabel sizeToFit];
+//    self.titleLabel.frame = CGRectMake(xPadding, titleYOrigin, contentWidth, CGRectGetHeight(self.titleLabel.frame));
+//
+//    CGFloat bodyYOrigin = CGRectGetMaxY(self.titleLabel.frame) + self.underTitlePadding;
+//
+//    self.bodyLabel.frame = CGRectMake(xPadding, bodyYOrigin, contentWidth, 0);
+//    [self.bodyLabel sizeToFit];
+//    self.bodyLabel.frame = CGRectMake(xPadding, bodyYOrigin, contentWidth, CGRectGetHeight(self.bodyLabel.frame));
+//
+//    self.actionButton.frame = CGRectMake((CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2), CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, contentWidth, kActionButtonHeight);
+    
+    self.actionButton.frame = CGRectMake((CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2), CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, contentWidth, kActionButtonHeight);
+    
+    CGFloat bodyYOrigin = CGRectGetMinY(self.actionButton.frame) - CGRectGetHeight(self.bodyLabel.frame);//CGRectGetMaxY(self.actionButton.frame);
+    
+    self.bodyLabel.frame = CGRectMake(xPadding, bodyYOrigin, contentWidth, 0);
+    [self.bodyLabel sizeToFit];
+    self.bodyLabel.frame = CGRectMake(xPadding, bodyYOrigin, contentWidth, CGRectGetHeight(self.bodyLabel.frame));
+    
+    CGFloat titleYOrigin = CGRectGetMinY(self.bodyLabel.frame) - CGRectGetHeight(self.titleLabel.frame) - self.self.underTitlePadding;
+    
     self.titleLabel.frame = CGRectMake(xPadding, titleYOrigin, contentWidth, 0);
     [self.titleLabel sizeToFit];
     self.titleLabel.frame = CGRectMake(xPadding, titleYOrigin, contentWidth, CGRectGetHeight(self.titleLabel.frame));
 
-    CGFloat bodyYOrigin = CGRectGetMaxY(self.titleLabel.frame) + self.underTitlePadding;
-
-    self.bodyLabel.frame = CGRectMake(xPadding, bodyYOrigin, contentWidth, 0);
-    [self.bodyLabel sizeToFit];
-    self.bodyLabel.frame = CGRectMake(xPadding, bodyYOrigin, contentWidth, CGRectGetHeight(self.bodyLabel.frame));
-
-    self.actionButton.frame = CGRectMake((CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2), CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, contentWidth, kActionButtonHeight);
 }
 
 
