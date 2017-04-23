@@ -203,4 +203,6 @@ NS_ASSUME_NONNULL_END
  */
 - (void)updateAlphas:(CGFloat)newAlpha;
 
+@property (nonatomic) CGFloat underBodyPadding;
+
 @end
